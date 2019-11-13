@@ -6,12 +6,16 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:54:55 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/12 17:01:23 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/13 18:58:41 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
+#include "./libft/libft.h"
+# define INT_MAX (2147483647)
+# define INT_MIN (-2147483648)
+# define LONG_MAX (9223372036854775807)
 
 typedef struct		s_border
 {

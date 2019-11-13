@@ -22,7 +22,7 @@ static int	sort_array(int **array)
 	}
 	i /= 2;
 	j = (*array)[i];
-	free(array);
+	free(*array);
 	return (j);
 }
 

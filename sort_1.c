@@ -14,6 +14,7 @@ t_border		*search_border(t_2_stacks *stacks)
 			border->min = stacks->a->value;
 		if (stacks->a->value > border->max)
 			border->max = stacks->a->value;
+		stacks->a = stacks->a->next;
 	}
 	border->med = search_med(stacks);
 	return (border);
