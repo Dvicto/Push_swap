@@ -22,7 +22,7 @@ int		main()
 	stacks->a = stacks->start_a;
 	stacks->b = new_stack();
 	stacks->start_b = stacks->b;
-	while (stacks->a)
+	/*while (stacks->a)
 	{
 		printf("%d", stacks->a->value);
 		stacks->a = stacks->a->next;
@@ -59,6 +59,9 @@ int		main()
 	if (stacks->a)
 		printf("%d", 7);
 	else
-		printf("%d", 9);
+		printf("%d", 9);*/
+	t_border *border;
+	border = search_border(stacks);
+	printf("%d, %d, %d", border->min, border->max, border->med);
 	return (0);
 }

@@ -13,6 +13,14 @@
 #include <stddef.h>
 #include <stdlib.h>
 
+typedef struct		s_border
+{
+	int				min;
+	int				max;
+	int				med;
+}					t_border;
+
+
 typedef struct		s_stack
 {
 	int				value;
@@ -39,3 +47,6 @@ void				rr(t_2_stacks *stacks);
 void				rra(t_2_stacks *stacks);
 void				rrb(t_2_stacks *stacks);
 void				rrr(t_2_stacks *stacks);
+
+int					search_med(t_2_stacks *stacks);
+t_border			*search_border(t_2_stacks *stacks);
