@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 18:12:08 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/13 18:02:52 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/14 16:22:16 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static char	*spcs(char const *s, char c)
 		l--;
 	if (l <= 0)
 		l = 0;
-	if (!(str = ft_strnew((size_t)l)))
+	if (l == 0 || !(str = ft_strnew((size_t)l)))
 		return (NULL);
 	s = s + i;
 	i = -1;
@@ -132,5 +132,6 @@ char		**ft_strsplit(char const *ss, char c)
 	}
 	str = fillstr(str, s, c);
 	free(lengs);
+	free(s);
 	return (str);
 }

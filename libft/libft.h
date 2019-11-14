@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsheev <nsheev@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 18:31:20 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/08 14:51:48 by nsheev           ###   ########.fr       */
+/*   Updated: 2019/11/14 16:52:05 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# define MAX_FD (255)
+# define BUFF_SIZE (4)
 
 typedef struct		s_list
 {
@@ -25,6 +27,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					get_next_line(const int fd, char **line);
 char				*ft_rm_last_char(char *str);
 int					ft_strncmp(const char *str1, const char *str2, size_t n);
 char				*ft_strstr(const char *haystack, const char *needle);

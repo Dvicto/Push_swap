@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"*.a": "cpp"
+		"*.a": "cpp",
+		"libft.h": "c"
 	}
 }
