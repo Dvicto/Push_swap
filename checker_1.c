@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 17:05:59 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/14 17:48:13 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/15 13:39:04 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,36 @@ void	add_a(t_2_stacks **stacks, int num)
 	(*stacks)->a->value = num;
 }
 
+void	free_all(t_2_stacks **stacks, char ***numbers)
+{
+	while (**numbers)
+	{
+		free(**numbers);
+		(*numbers)++;
+	}
+	//free(*numbers);
+	(*stacks)->a = (*stacks)->start_a;
+	while ((*stacks)->a)
+	{
+		free((*stacks)->a);
+		(*stacks)->a = (*stacks)->a->next;
+	}
+	free(*stacks);
+}
+
 int		check_and_create(t_2_stacks **stacks, char *str)
 {
 	char	**numbers;
 	int		num;
+	int		i;
 
+	i = 0;
 	numbers = ft_strsplit(str, ' ');
-	while (*numbers)
+	while (numbers[i])
 	{
-		if (new_atoi(*numbers) == LONG_MAX)
+		if (new_atoi(numbers[i]) == LONG_MAX)
 		{
+			free_all(stacks, &numbers);
 			// free(numbers);
 			// if ((*stacks)->a)
 			// {
@@ -85,10 +105,10 @@ int		check_and_create(t_2_stacks **stacks, char *str)
 		}
 		else
 		{
-			num = (int)new_atoi(*numbers);
+			num = (int)new_atoi(numbers[i]);
 			add_a(stacks, num);
 		}
-		numbers++;
+		i++;
 	}
 	return (1);
 }
@@ -140,7 +160,7 @@ int		main(int argc, char **argv)
 	char		*comands;
 	i = 1;
 
-	open("123", O_RDWR);
+	//open("123", O_RDWR);
 	if (argc < 2)
 		return (0);
 	stacks = (t_2_stacks *)malloc(sizeof(t_2_stacks));
@@ -154,18 +174,18 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
-	while (get_next_line(3, &comands))
+	/*while (get_next_line(0, &comands))
 	{
 		checker_stdin(stacks, comands);
 		free(comands);
-	}
+	}*/
 	stacks->a = stacks->start_a;
 	while (stacks->a)
 	{
 		printf("%d\n", stacks->a->value);
 		stacks->a = stacks->a->next;
 	}
-	close(3);
+	//close(3);
 	return (0);
 }
 /*
