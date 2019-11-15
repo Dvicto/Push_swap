@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 17:05:59 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/15 16:09:58 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:27:13 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,49 +46,7 @@ long long int		new_atoi(char *str)
 	return (num);
 }
 
-void	add_a(t_2_stacks **stacks, int num)
-{
-	static int	qwert = 0;
-
-	if (qwert == 0)
-	{
-		(*stacks)->a = new_stack();
-		(*stacks)->a->value = num;
-		(*stacks)->start_a = (*stacks)->a;
-		qwert++;
-		return ;
-	}
-	while ((*stacks)->a->next != NULL)
-		(*stacks)->a = (*stacks)->a->next;
-	(*stacks)->a->next = new_stack();
-	(*stacks)->a = (*stacks)->a->next;
-	(*stacks)->a->value = num;
-}
-
-void	free_all(t_2_stacks **stacks, char ***numbers)
-{
-	int 	i;
-	t_stack *tmp;
-
-	i = 0;
-	while ((*numbers)[i])
-	{
-		free((*numbers)[i]);
-		i++;
-	}
-	free(*numbers);
-	(*stacks)->a = (*stacks)->start_a;
-	while ((*stacks)->a->next)
-	{
-		tmp = (*stacks)->a;
-		(*stacks)->a = (*stacks)->a->next;
-		free(tmp);
-	}
-	free((*stacks)->a);
-	free(*stacks);
-}
-
-int		check_and_create(t_2_stacks **stacks, char *str)
+int		check_and_create(t_2_stacks *stacks, char *str)
 {
 	char	**numbers;
 	int		num;
@@ -117,44 +75,15 @@ int		check_and_create(t_2_stacks **stacks, char *str)
 	return (1);
 }
 
-void	error_checker_stder(t_2_stacks *stacks, char *str)
+int		ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 {
-	if (stacks->a)
-		free(stacks->a);
-	if (stacks->b)
-		free(stacks->b);
-	free (stacks);
-	free(str);
-	write(2, "Error\n", 6);
-	exit(0);
-}
-
-void	checker_stdin(t_2_stacks *stacks, char *str)
-{
-	if (!ft_strcmp(str, "sa"))
-		sa(stacks);
-	else if (!ft_strcmp(str, "sb"))
-		sb(stacks);
-	else if (!ft_strcmp(str, "ss"))
-		ss(stacks);
-	else if (!ft_strcmp(str, "pa"))
-		pa(stacks);
-	else if (!ft_strcmp(str, "pb"))
-		pb(stacks);
-	else if (!ft_strcmp(str, "ra"))
-		ra(stacks);
-	else if (!ft_strcmp(str, "rb"))
-		rb(stacks);
-	else if (!ft_strcmp(str, "rr"))
-		rr(stacks);
-	else if (!ft_strcmp(str, "rra"))
-		rra(stacks);
-	else if (!ft_strcmp(str, "rrb"))
-		rrb(stacks);
-	else if (!ft_strcmp(str, "rrr"))
-		rrr(stacks);
-	else
-		error_checker_stder(stacks, str);
+	if (!(check_and_create(stacks, str)))
+		{
+			free_stacks(stacks);
+			return (write_error());
+		}
+	i++;
+	return (i);
 }
 
 int		main(int argc, char **argv)
@@ -162,23 +91,15 @@ int		main(int argc, char **argv)
 	t_2_stacks	*stacks;
 	int			i;
 	char		*comands;
-	i = 1;
 
-	open("123", O_RDWR);
+	i = 1;
 	if (argc < 2)
 		return (0);
 	stacks = (t_2_stacks *)malloc(sizeof(t_2_stacks));
 	stacks->b = NULL;
-	stacks->start_b = NULL;
 	while (i < argc)
-	{
-		if (!(check_and_create(&stacks, argv[i])))
-		{
-			return (write_error());
-		}
-		i++;
-	}
-	while (get_next_line(3, &comands))
+		i = ne_xvataet_mesta(stacks, argv[i], i);
+	while (get_next_line(0, &comands))
 	{
 		checker_stdin(stacks, comands);
 		free(comands);
@@ -187,28 +108,6 @@ int		main(int argc, char **argv)
 		write(1,"OK", 2);
 	else
 		write(1,"KO", 2);
-	stacks->a = stacks->start_a;
-	while (stacks->a)
-	{
-		printf("%d\n", stacks->a->value);
-		stacks->a = stacks->a->next;
-	}
-	close(3);
+	free_stacks(stacks);
 	return (0);
 }
-/*
-int		main()
-{
-	char	**numbers;
-	char	*str = "3 -20 7 e8 120 -23132 a";
-	numbers = ft_strsplit(str, ' ');
-	while (*numbers)
-	{
-		if (new_atoi(*numbers) == LONG_MAX)
-			printf("%s\n", "error");
-		else
-			printf("%lld\n", new_atoi(*numbers));
-		numbers++;
-	}
-	return (0);
-}*/

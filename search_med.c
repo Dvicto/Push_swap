@@ -28,23 +28,24 @@ static int	sort_array(int **array)
 
 int	search_med(t_2_stacks *stacks)
 {
-	int	i;
-	int	*array;
+	int		i;
+	int		*array;
+	t_stack	*tmpa;
 
 	i = 0;
-	stacks->a = stacks->start_a;
-	while (stacks->a)
+	tmpa = stacks->a;
+	while (tmpa)
 	{
-		stacks->a = stacks->a->next;
+		tmpa = tmpa->next;
 		i++;
 	}
 	array = (int *)malloc(sizeof(int) * i);
-	stacks->a = stacks->start_a;
+	tmpa = stacks->a;
 	i = 0;
-	while (stacks->a)
+	while (tmpa)
 	{
-		array[i] = stacks->a->value;
-		stacks->a = stacks->a->next;
+		array[i] = tmpa->value;
+		tmpa = tmpa->next;
 		i++;
 	}
 	return (sort_array(&array));

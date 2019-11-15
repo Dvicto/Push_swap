@@ -6,7 +6,7 @@
 #    By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 16:42:57 by dvictor           #+#    #+#              #
-#    Updated: 2019/11/13 16:48:58 by dvictor          ###   ########.fr        #
+#    Updated: 2019/11/15 19:01:44 by dvictor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC = ./check_sort.c \
 ./rra_rrb_rrr.c \
 ./sa_sb_ss.c \
 ./search_med.c \
-./sort_1.c
+./sort_1.c \
+./errors.c
 
 OBJ = $(SRC:%.c=%.o)
 

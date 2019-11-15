@@ -2,32 +2,34 @@
 
 void		rra(t_2_stacks *stacks)
 {
-	t_stack		*stack;
+	t_stack		*tmpa;
+	t_stack		*tmpa2;
 
-	stack = stacks->start_a;
-	stacks->a = stacks->start_a;
 	if (!(stacks->a) || !(stacks->a->next))
 		return ;
-	while (stacks->a->next->next != NULL)
-		stacks->a = stacks->a->next;
-	stacks->start_a = stacks->a->next;
-	stacks->start_a->next = stack;
-	stacks->a->next = NULL;
+	tmpa = stacks->a;
+	tmpa2 = stacks->a;
+	while (tmpa2->next->next != NULL)
+		tmpa2 = tmpa2->next;
+	stacks->a = tmpa2->next;
+	stacks->a->next = tmpa;
+	tmpa2->next = NULL;
 }
 
 void		rrb(t_2_stacks *stacks)
 {
-	t_stack		*stack;
+	t_stack		*tmpb;
+	t_stack		*tmpb2;
 
-	stack = stacks->start_b;
-	stacks->b = stacks->start_b;
 	if (!(stacks->b) || !(stacks->b->next))
 		return ;
-	while (stacks->b->next->next != NULL)
-		stacks->b = stacks->b->next;
-	stacks->start_b = stacks->b->next;
-	stacks->start_b->next = stack;
-	stacks->b->next = NULL;
+	tmpb = stacks->b;
+	tmpb2 = stacks->b;
+	while (tmpb2->next->next != NULL)
+		tmpb2 = tmpb2->next;
+	stacks->b = tmpb2->next;
+	stacks->b->next = tmpb;
+	tmpb2->next = NULL;
 }
 
 void		rrr(t_2_stacks *stacks)

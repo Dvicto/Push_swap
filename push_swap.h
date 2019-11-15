@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:54:55 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/15 16:03:26 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:27:04 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,18 @@ typedef struct		s_2_stacks
 {
 	t_stack			*a;
 	t_stack			*b;
-	t_stack			*start_a;
-	t_stack			*start_b;
 }					t_2_stacks;
 
-t_stack				*new_stack(void);
+int					write_error();
+long long int		new_atoi(char *str);
+void				add_a(t_2_stacks *stacks, int num);
+void				free_all(t_2_stacks *stacks, char ***numbers);
+int					check_and_create(t_2_stacks *stacks, char *str);
+void				error_checker_stder(t_2_stacks *stacks, char *str);
+void				checker_stdin(t_2_stacks *stacks, char *str);
+void				free_stacks(t_2_stacks *stacks);
+void				checker_stdin(t_2_stacks *stacks, char *str);
+t_stack				*new_stack(t_stack *stack);
 void				sa(t_2_stacks *stacks);
 void				sb(t_2_stacks *stacks);
 void				ss(t_2_stacks *stacks);

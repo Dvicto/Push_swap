@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 15:57:56 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/15 16:08:18 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/15 18:09:22 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 int		check_sort(t_2_stacks *stacks)
 {
 	int		tmp;
+	t_stack	*tmpa;
 
 	if (stacks->b)
 		return (0);
-	tmp = stacks->start_a->value;
-	stacks->a = stacks->start_a->next;
-	while (stacks->a)
+	tmp = stacks->a->value;
+	tmpa = stacks->a->next;
+	while (tmpa)
 	{
-		if (stacks->a->value <= tmp)
+		if (tmpa->value <= tmp)
 			return (0);
-		stacks->a = stacks->a->next;
+		tmp = tmpa->value;
+		tmpa = tmpa->next;
 	}
 	return (check_count(stacks));
 }
@@ -33,19 +35,21 @@ int		check_count(t_2_stacks *stacks)
 {
 	int		tmp;
 	t_stack *temp;
+	t_stack *temp2;
 	
-	stacks->a = stacks->start_a;
-	temp = stacks->start_a->next;
-	while (stacks->a)
+	temp2 = stacks->a;
+	temp = stacks->a->next;
+	while (temp2)
 	{
-		tmp = stacks->a->value;
+		tmp = temp2->value;
+		temp = temp2->next;
 		while (temp)
 		{
 			if (temp->value == tmp)
 			return (0);
 			temp = temp->next;
 		}
-		stacks->a = stacks->a->next;
+		temp2 = temp2->next;
 	}
 	return (1);
 
