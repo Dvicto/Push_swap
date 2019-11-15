@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 17:05:59 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/15 13:39:04 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/15 16:09:58 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,24 @@ void	add_a(t_2_stacks **stacks, int num)
 
 void	free_all(t_2_stacks **stacks, char ***numbers)
 {
-	while (**numbers)
+	int 	i;
+	t_stack *tmp;
+
+	i = 0;
+	while ((*numbers)[i])
 	{
-		free(**numbers);
-		(*numbers)++;
+		free((*numbers)[i]);
+		i++;
 	}
-	//free(*numbers);
+	free(*numbers);
 	(*stacks)->a = (*stacks)->start_a;
-	while ((*stacks)->a)
+	while ((*stacks)->a->next)
 	{
-		free((*stacks)->a);
+		tmp = (*stacks)->a;
 		(*stacks)->a = (*stacks)->a->next;
+		free(tmp);
 	}
+	free((*stacks)->a);
 	free(*stacks);
 }
 
@@ -95,12 +101,6 @@ int		check_and_create(t_2_stacks **stacks, char *str)
 		if (new_atoi(numbers[i]) == LONG_MAX)
 		{
 			free_all(stacks, &numbers);
-			// free(numbers);
-			// if ((*stacks)->a)
-			// {
-			// 	free((*stacks)->a); FIXME: longlonglongint crash free in cycle
-			// 	free((*stacks));
-			// }
 			return (0);
 		}
 		else
@@ -110,6 +110,10 @@ int		check_and_create(t_2_stacks **stacks, char *str)
 		}
 		i++;
 	}
+	i = 0;
+	while (numbers[i++])
+		free(numbers[i]);
+	free(numbers);
 	return (1);
 }
 
@@ -160,7 +164,7 @@ int		main(int argc, char **argv)
 	char		*comands;
 	i = 1;
 
-	//open("123", O_RDWR);
+	open("123", O_RDWR);
 	if (argc < 2)
 		return (0);
 	stacks = (t_2_stacks *)malloc(sizeof(t_2_stacks));
@@ -174,18 +178,22 @@ int		main(int argc, char **argv)
 		}
 		i++;
 	}
-	/*while (get_next_line(0, &comands))
+	while (get_next_line(3, &comands))
 	{
 		checker_stdin(stacks, comands);
 		free(comands);
-	}*/
+	}
+	if (check_sort(stacks))
+		write(1,"OK", 2);
+	else
+		write(1,"KO", 2);
 	stacks->a = stacks->start_a;
 	while (stacks->a)
 	{
 		printf("%d\n", stacks->a->value);
 		stacks->a = stacks->a->next;
 	}
-	//close(3);
+	close(3);
 	return (0);
 }
 /*

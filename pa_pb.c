@@ -10,7 +10,8 @@ void	pa(t_2_stacks *stacks)
 	stacks->start_b->next = stacks->b;
 	stacks->start_b->value = stacks->a->value;
 	stacks->start_a = stacks->start_a->next;
-	free(stacks->a);
+	stacks->b = stacks->start_b;
+	stacks->a = NULL;
 }
 
 void	pb(t_2_stacks *stacks)
@@ -23,5 +24,6 @@ void	pb(t_2_stacks *stacks)
 	stacks->start_a->next = stacks->a;
 	stacks->start_a->value = stacks->b->value;
 	stacks->start_b = stacks->start_b->next;
-	free(stacks->b);
+	stacks->a = stacks->start_a;
+	stacks->b = NULL;
 }

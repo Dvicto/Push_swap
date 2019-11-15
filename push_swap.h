@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:54:55 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/14 17:05:21 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/15 16:03:26 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,5 @@ void				rrr(t_2_stacks *stacks);
 
 int					search_med(t_2_stacks *stacks);
 t_border			*search_border(t_2_stacks *stacks);
+int					check_sort(t_2_stacks *stacks);
+int					check_count(t_2_stacks *stacks);
