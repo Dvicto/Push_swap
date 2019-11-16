@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:07:29 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 19:21:32 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:16:03 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	fix_ost_a(t_2_stacks *stacks, t_border *border)
 	if (!(stacks->b))
 		free_all_and_exit(stacks, border);
 }
-
+/*
 void	all_to_b(t_border *border, t_2_stacks *stacks)
 {
 	int			count;
@@ -58,21 +58,42 @@ void	all_to_b(t_border *border, t_2_stacks *stacks)
 		count++;
 		tmp = tmp->next;
 	}
-	if (count > 3)
+	if (count == 3)
+		return (fix_ost_a(stacks, border));
+	while (count > 0)
 	{
-		while (count > 0)
+		if (stacks->a->value != border->min && stacks->a->value != border->max
+			&& stacks->a->value != border->med)
 		{
-			if (stacks->a->value != border->min && stacks->a->value != border->max
-				&& stacks->a->value != border->med)
-			{
-				p_pb(stacks);
-			}
-			else
-				p_ra(stacks);
-			count--;
+			p_pb(stacks);
 		}
+		else
+			p_ra(stacks);
+		count--;
 	}
 	fix_ost_a(stacks, border);
+}*/
+
+void	all_to_b(t_2_stacks *stacks)
+{
+	int			count;
+	t_stack	*tmp;
+
+	count = 0;
+	tmp = stacks->a;
+	while (tmp)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	if (count == 3)
+		return (sort_3(stacks));
+	while (count > 3)
+	{
+		p_pb(stacks);
+		count--;
+	}
+	sort_3(stacks);
 }
 
 void	algos_for_2_elems(t_2_stacks *stacks)

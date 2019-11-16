@@ -6,7 +6,7 @@
 #    By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 16:42:57 by dvictor           #+#    #+#              #
-#    Updated: 2019/11/16 18:48:24 by dvictor          ###   ########.fr        #
+#    Updated: 2019/11/16 21:17:01 by dvictor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 SRCS1 = creation.c pa_pb.c checker_1.c check_sort.c errors.c ra_rb_rr.c rra_rrb_rrr.c sa_sb_ss.c
 SRCS2 = search_med.c sort_1.c push_swap_start.c errors.c ra_rb_rr.c rra_rrb_rrr.c sa_sb_ss.c pa_pb.c creation.c push_swap1.c \
 write_op1.c write_op2.c write_op3.c check_sort.c push_swap2.c n_operations_to_up.c push_swap3.c move_stacks.c write_op4.c \
-write_op5.c
+write_op5.c sort_3.c
 HEADER = push_swap.h
 OBJS1 = $(SRCS1:.c=.o)
 OBJS2 = $(SRCS2:.c=.o)

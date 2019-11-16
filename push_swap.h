@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:54:55 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 18:48:08 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:16:51 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void				p_rrr(t_2_stacks *stacks);
 
 void				free_all_and_exit(t_2_stacks *stacks, t_border *border);
 void				fix_ost_a(t_2_stacks *stacks, t_border *border);
-void				all_to_b(t_border *border, t_2_stacks *stacks);
+void				all_to_b(t_2_stacks *stacks);
 void				algos_for_2_elems(t_2_stacks *stacks);
 void				choose_algos(t_2_stacks *stacks);
 int					kol_vo_elementov_v_stacke(t_stack *stack);
@@ -105,3 +105,4 @@ void				rrr_n_times(t_2_stacks *stacks, int i);
 void				ra_n_times(t_2_stacks *stacks, int i);
 void				rb_n_times(t_2_stacks *stacks, int i);
 void				rr_n_times(t_2_stacks *stacks, int i);
+void				sort_3(t_2_stacks *stacks);

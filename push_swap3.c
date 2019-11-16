@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 18:24:21 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 18:50:13 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:16:37 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	push_swap(t_2_stacks *stacks)
 {
-	t_border	*border;
+	//t_border	*border;
 	choose_algos(stacks);
-	border = search_border(stacks);
-	all_to_b(border, stacks);
+	//border = search_border(stacks);
+	all_to_b(stacks);
+	if (!(stacks->b))
+		return ; 
 	algos_for_more_elems(stacks);
 }
 

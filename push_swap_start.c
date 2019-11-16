@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:35:52 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 19:10:20 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:18:56 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ int		main(int argc, char **argv)
 	if (!check_count(stacks))
 		return(write_error());
 	push_swap(stacks);
+	free_stacks(stacks);
 	return (0);
 }

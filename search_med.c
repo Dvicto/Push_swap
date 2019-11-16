@@ -1,29 +1,29 @@
 #include	"push_swap.h"
 
-static int	sort_array(int **array, int i, int j, int n)
+static int	sort_array(int *array, int i, int j, int n)
 {
 	int tmp;
 
-	while ((*array)[i])
+	while (array[i])
 		i++;
 	while (n < i)
 	{
 		j = 0;
 		while (j < i - 1)
 		{
-			if ((*array)[j] > (*array)[j + 1])
+			if (array[j] > array[j + 1])
 			{
-				tmp = (*array)[j];
-				(*array)[j] = (*array)[j + 1];
-				(*array)[j + 1] = tmp;
+				tmp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = tmp;
 			}
 			j++;
 		}
 		n++;
 	}
 	i /= 2;
-	j = (*array)[i];
-	free(*array);
+	j = array[i];
+	//free(array);
 	return (j);
 }
 
@@ -49,5 +49,5 @@ int	search_med(t_2_stacks *stacks)
 		tmpa = tmpa->next;
 		i++;
 	}
-	return (sort_array(&array, 0, 0, 0));
+	return (sort_array(array, 0, 0, 0));
 }
