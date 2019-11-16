@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 15:07:29 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 18:22:41 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 19:21:32 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,19 @@ void	all_to_b(t_border *border, t_2_stacks *stacks)
 		count++;
 		tmp = tmp->next;
 	}
-	while (count > 0)
+	if (count > 3)
 	{
-		if (stacks->a->value != border->min && stacks->a->value != border->max
-			&& stacks->a->value != border->med)
+		while (count > 0)
 		{
-			p_pb(stacks);
+			if (stacks->a->value != border->min && stacks->a->value != border->max
+				&& stacks->a->value != border->med)
+			{
+				p_pb(stacks);
+			}
+			else
+				p_ra(stacks);
+			count--;
 		}
-		else
-			p_ra(stacks);
-		count--;
 	}
 	fix_ost_a(stacks, border);
 }
@@ -95,9 +98,16 @@ void	choose_algos(t_2_stacks *stacks)
 		tmp = tmp->next;
 	}
 	if (!stacks->a || kol_vo == 1 || check_sort(stacks))
-		return ;
+	{
+		free_stacks(stacks);
+		exit(0);
+	}
 	else if (kol_vo == 2)
+	{
 		algos_for_2_elems(stacks);
+		free_stacks(stacks);
+		exit(0);
+	}
 	else if (kol_vo > 2)
 		return ;
 }

@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:35:52 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 17:23:36 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 19:10:20 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ static long long int		new_atoi(char *str)
 	num = 0;
 	if (str[i] == '-')
 	{
+		if (!(str[i + 1]))
+			return (LONG_MAX);
 		fl = 1;
 		i++;
 	}
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if (str[i] < '0' || str[i] > '9' || num > INT_MAX || num * fl < INT_MIN)
 			return (LONG_MAX);
 		num = num * 10 + (str[i] - '0');
 		i++;
