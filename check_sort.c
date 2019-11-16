@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 15:57:56 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/15 18:09:22 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 17:31:40 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,4 @@ int		check_count(t_2_stacks *stacks)
 		temp2 = temp2->next;
 	}
 	return (1);
-
 }

@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 12:54:55 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 16:27:49 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 18:48:08 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,3 +73,35 @@ void				p_ss(t_2_stacks *stacks);
 void				p_rra(t_2_stacks *stacks);
 void				p_rrb(t_2_stacks *stacks);
 void				p_rrr(t_2_stacks *stacks);
+
+void				free_all_and_exit(t_2_stacks *stacks, t_border *border);
+void				fix_ost_a(t_2_stacks *stacks, t_border *border);
+void				all_to_b(t_border *border, t_2_stacks *stacks);
+void				algos_for_2_elems(t_2_stacks *stacks);
+void				choose_algos(t_2_stacks *stacks);
+int					kol_vo_elementov_v_stacke(t_stack *stack);
+int					n_operations_to_up_b_by_rrb(t_2_stacks *push, t_stack *b);
+int					n_operations_to_up_b_by_rb(t_2_stacks *push, t_stack *b);
+int					n_operations_to_up_a_by_rra(t_2_stacks *push, t_stack *a);
+int					n_operations_to_up_a_by_ra(t_2_stacks *push, t_stack *a);
+void				move_stack_a_to_top(t_2_stacks *push, t_stack *a);
+void				move_stack_b_to_top(t_2_stacks *push, t_stack *b);
+void				move_stacks_a_b_to_top(t_2_stacks *push, t_stack *a, t_stack *b);
+int					number_operations_to_put_b_to_a(t_2_stacks *push, t_stack *a, t_stack *b);
+void				choose_best_a_b_stacks_to_move(t_2_stacks *push, \
+					t_stack **a_stack_to_move, t_stack **b_stack_to_move);
+t_stack				*elem_n_of_stack(t_stack *stack, int n);
+int					number_operations_to_put_b_to_a(t_2_stacks *push, t_stack *a, t_stack *b);
+int					min_of_2(int a, int b);
+t_stack				*min_elem_of_stack(t_stack *stack);
+void				algos_for_more_elems(t_2_stacks *stacks);
+void				choose_best_a_b_stacks_to_move(t_2_stacks *push, \
+t_stack 			**a_stack_to_move, t_stack **b_stack_to_move);
+t_stack				*stack_a_to_put_b_on_it(t_2_stacks *push, t_stack *b);
+t_stack				*on_min_elem_a(t_2_stacks *push);
+void				rra_n_times(t_2_stacks *stacks, int i);
+void				rrb_n_times(t_2_stacks *stacks, int i);
+void				rrr_n_times(t_2_stacks *stacks, int i);
+void				ra_n_times(t_2_stacks *stacks, int i);
+void				rb_n_times(t_2_stacks *stacks, int i);
+void				rr_n_times(t_2_stacks *stacks, int i);
