@@ -6,20 +6,18 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 17:05:59 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 19:09:24 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:46:20 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long long int		new_atoi(char *str)
+static long long int	new_atoi(char *str, int i)
 {
-	int				i;
 	int				fl;
 	long long int	num;
 
 	fl = 1;
-	i = 0;
 	num = 0;
 	if (str[i] == '-')
 	{
@@ -42,7 +40,7 @@ static long long int		new_atoi(char *str)
 	return (num);
 }
 
-static int		check_and_create(t_2_stacks *stacks, char *str)
+static int				check_and_create(t_2_stacks *stacks, char *str)
 {
 	char	**numbers;
 	int		num;
@@ -52,14 +50,14 @@ static int		check_and_create(t_2_stacks *stacks, char *str)
 	numbers = ft_strsplit(str, ' ');
 	while (numbers[i])
 	{
-		if (new_atoi(numbers[i]) == LONG_MAX)
+		if (new_atoi(numbers[i], 0) == LONG_MAX)
 		{
 			free_all(stacks, &numbers);
 			return (0);
 		}
 		else
 		{
-			num = (int)new_atoi(numbers[i]);
+			num = (int)new_atoi(numbers[i], 0);
 			add_a(stacks, num);
 		}
 		i++;
@@ -71,12 +69,12 @@ static int		check_and_create(t_2_stacks *stacks, char *str)
 	return (1);
 }
 
-static int		ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
+static int				ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 {
 	if (!(check_and_create(stacks, str)))
-		{
-			return (write_error());
-		}
+	{
+		return (write_error());
+	}
 	i++;
 	if (!(check_count(stacks)))
 	{
@@ -86,7 +84,7 @@ static int		ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 	return (i);
 }
 
-int		main(int argc, char **argv)
+int						main(int argc, char **argv)
 {
 	t_2_stacks	*stacks;
 	int			i;
@@ -107,9 +105,9 @@ int		main(int argc, char **argv)
 	}
 	free(comands);
 	if (check_sort(stacks))
-		write(1,"OK\n", 3);
+		write(1, "OK\n", 3);
 	else
-		write(1,"KO\n", 3);
+		write(1, "KO\n", 3);
 	free_stacks(stacks);
 	return (0);
 }

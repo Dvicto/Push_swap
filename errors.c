@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 19:00:08 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 17:22:25 by dvictor          ###   ########.fr       */
+/*   Created: 2019/11/16 21:31:54 by dvictor           #+#    #+#             */
+/*   Updated: 2019/11/16 23:30:47 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 void	free_stacks(t_2_stacks *stacks)
 {
@@ -36,11 +36,7 @@ void	free_stacks(t_2_stacks *stacks)
 
 void	error_checker_stder(t_2_stacks *stacks, char *str)
 {
-	if (stacks->a)
-		free(stacks->a);
-	if (stacks->b)
-		free(stacks->b);
-	free (stacks);
+	free_stacks(stacks);
 	free(str);
 	write(2, "Error\n", 6);
 	exit(0);
@@ -48,7 +44,7 @@ void	error_checker_stder(t_2_stacks *stacks, char *str)
 
 void	free_all(t_2_stacks *stacks, char ***numbers)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while ((*numbers)[i])
@@ -90,7 +86,7 @@ void	checker_stdin(t_2_stacks *stacks, char *str)
 		error_checker_stder(stacks, str);
 }
 
-int		write_error()
+int		write_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(0);

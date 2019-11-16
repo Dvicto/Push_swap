@@ -6,11 +6,11 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 17:36:08 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 18:49:45 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:39:57 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"push_swap.h"
+#include "push_swap.h"
 
 t_stack	*elem_n_of_stack(t_stack *stack, int n)
 {

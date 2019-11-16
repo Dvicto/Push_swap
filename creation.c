@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   creation.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/16 21:32:09 by dvictor           #+#    #+#             */
+/*   Updated: 2019/11/16 21:32:10 by dvictor          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include "stdlib.h"
 
@@ -9,7 +21,7 @@ t_stack		*new_stack(t_stack *stack)
 	return (stack);
 }
 
-void	add_a(t_2_stacks *stacks, int num)
+void		add_a(t_2_stacks *stacks, int num)
 {
 	static int	qwert = 0;
 	t_stack		*tmp;

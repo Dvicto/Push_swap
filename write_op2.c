@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 16:21:23 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 16:24:00 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:41:54 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	p_sb(t_2_stacks *stacks)
 	sb(stacks);
 	ft_putstr("sb\n");
 }
+
 void	p_ss(t_2_stacks *stacks)
 {
 	ss(stacks);

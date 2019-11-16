@@ -1,4 +1,16 @@
-#include	"push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sa_sb_ss.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/16 21:51:43 by dvictor           #+#    #+#             */
+/*   Updated: 2019/11/16 21:52:09 by dvictor          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 void	sa(t_2_stacks *stacks)
 {
@@ -10,7 +22,7 @@ void	sa(t_2_stacks *stacks)
 	tmpa = stacks->a->next;
 	tmp = stacks->a->value;
 	stacks->a->value = tmpa->value;
-	tmpa->value = tmp;	
+	tmpa->value = tmp;
 }
 
 void	sb(t_2_stacks *stacks)
@@ -23,7 +35,7 @@ void	sb(t_2_stacks *stacks)
 	tmpb = stacks->b->next;
 	tmp = stacks->b->value;
 	stacks->b->value = tmpb->value;
-	tmpb->value = tmp;	
+	tmpb->value = tmp;
 }
 
 void	ss(t_2_stacks *stacks)

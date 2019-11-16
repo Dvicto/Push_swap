@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"*.a": "cpp",
-		"libft.h": "c"
+		"libft.h": "c",
+		"push_swap.h": "c"
 	}
 }

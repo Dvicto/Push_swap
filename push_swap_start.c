@@ -6,20 +6,18 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:35:52 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 21:18:56 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:51:16 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static long long int		new_atoi(char *str)
+static long long int	new_atoi(char *str, int i)
 {
-	int				i;
 	int				fl;
 	long long int	num;
 
 	fl = 0;
-	i = 0;
 	num = 0;
 	if (str[i] == '-')
 	{
@@ -42,24 +40,22 @@ static long long int		new_atoi(char *str)
 	return (num);
 }
 
-static int		check_and_create(t_2_stacks *stacks, char *str)
+static int				check_and_create(t_2_stacks *stacks, char *str, int i)
 {
 	char	**numbers;
 	int		num;
-	int		i;
 
-	i = 0;
 	numbers = ft_strsplit(str, ' ');
 	while (numbers[i])
 	{
-		if (new_atoi(numbers[i]) == LONG_MAX)
+		if (new_atoi(numbers[i], 0) == LONG_MAX)
 		{
 			free_all(stacks, &numbers);
 			return (0);
 		}
 		else
 		{
-			num = (int)new_atoi(numbers[i]);
+			num = (int)new_atoi(numbers[i], 0);
 			add_a(stacks, num);
 		}
 		i++;
@@ -72,17 +68,17 @@ static int		check_and_create(t_2_stacks *stacks, char *str)
 	return (1);
 }
 
-static int		ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
+static int				ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 {
-	if (!(check_and_create(stacks, str)))
-		{
-			return (write_error());
-		}
+	if (!(check_and_create(stacks, str, 0)))
+	{
+		return (write_error());
+	}
 	i++;
 	return (i);
 }
 
-int		main(int argc, char **argv)
+int						main(int argc, char **argv)
 {
 	t_2_stacks	*stacks;
 	int			i;
@@ -99,7 +95,7 @@ int		main(int argc, char **argv)
 		i++;
 	}
 	if (!check_count(stacks))
-		return(write_error());
+		return (write_error());
 	push_swap(stacks);
 	free_stacks(stacks);
 	return (0);

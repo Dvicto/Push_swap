@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 18:26:47 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 18:28:01 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 21:34:51 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	move_stacks_a_b_to_top(t_2_stacks *push, t_stack *a, t_stack *b)
 	move_stack_b_to_top(push, b);
 }
 
-int		number_operations_to_put_b_to_a(t_2_stacks *push, t_stack *a, t_stack *b)
+int		number_operations_to_put_b_to_a(t_2_stacks *push, t_stack *a, \
+			t_stack *b)
 {
 	int	n;
 
