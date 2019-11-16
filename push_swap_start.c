@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_1.c                                        :+:      :+:    :+:   */
+/*   push_swap_start.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/14 17:05:59 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/16 17:23:08 by dvictor          ###   ########.fr       */
+/*   Created: 2019/11/16 14:35:52 by dvictor           #+#    #+#             */
+/*   Updated: 2019/11/16 17:23:36 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static int		check_and_create(t_2_stacks *stacks, char *str)
 	i = -1;
 	while (numbers[++i])
 		free(numbers[i]);
-	free(numbers);
+	if (numbers)
+		free(numbers);
 	return (1);
 }
 
@@ -76,11 +77,6 @@ static int		ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 			return (write_error());
 		}
 	i++;
-	if (!(check_count(stacks)))
-	{
-		write_error();
-		exit(0);
-	}
 	return (i);
 }
 
@@ -88,26 +84,20 @@ int		main(int argc, char **argv)
 {
 	t_2_stacks	*stacks;
 	int			i;
-	char		*comands;
 
-	i = 0;
+	i = 1;
 	if (argc < 2)
 		return (0);
 	stacks = (t_2_stacks *)malloc(sizeof(t_2_stacks));
 	stacks->b = NULL;
 	stacks->a = NULL;
-	while (++i < argc)
-		ne_xvataet_mesta(stacks, argv[i], i);
-	while (get_next_line(0, &comands))
+	while (i < argc)
 	{
-		checker_stdin(stacks, comands);
-		free(comands);
+		ne_xvataet_mesta(stacks, argv[i], i);
+		i++;
 	}
-	free(comands);
-	if (check_sort(stacks))
-		write(1,"OK\n", 3);
-	else
-		write(1,"KO\n", 3);
-	free_stacks(stacks);
+	if (!check_count(stacks))
+		return(write_error());
+	push_swap(stacks);
 	return (0);
 }

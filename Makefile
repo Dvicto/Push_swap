@@ -6,41 +6,47 @@
 #    By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 16:42:57 by dvictor           #+#    #+#              #
-#    Updated: 2019/11/15 19:01:44 by dvictor          ###   ########.fr        #
+#    Updated: 2019/11/16 16:41:49 by dvictor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAG = -Wall -Werror -Wextra
-NAME = push_swap.a
-SRC = ./check_sort.c \
-./creation.c \
-./pa_pb.c \
-./ra_rb_rr.c \
-./rra_rrb_rrr.c \
-./sa_sb_ss.c \
-./search_med.c \
-./sort_1.c \
-./errors.c
+NAME1 = checker
+NAME2 = push_swap
+NAME = $(NAME1) $(NAME2)
+MAKE = make
+FLAGS = -Wall -Wextra -Werror
+SRCS1 = creation.c pa_pb.c checker_1.c check_sort.c errors.c ra_rb_rr.c rra_rrb_rrr.c sa_sb_ss.c
+SRCS2 = search_med.c sort_1.c push_swap_start.c errors.c ra_rb_rr.c rra_rrb_rrr.c sa_sb_ss.c pa_pb.c creation.c push_swap1.c \
+write_op1.c write_op2.c write_op3.c check_sort.c
+HEADER = push_swap.h
+OBJS1 = $(SRCS1:.c=.o)
+OBJS2 = $(SRCS2:.c=.o)
+LIBFT = ./libft/libft.a
+all: $(NAME1) $(NAME2)
 
-OBJ = $(SRC:%.c=%.o)
+$(NAME1): $(OBJS1) $(HEADER)
+	gcc $(FLAGS) ./libft/libft.a $(OBJS1) -o $(NAME1)
 
-all: $(NAME)
+$(NAME2): $(OBJS2) $(HEADER)
+	gcc $(FLAGS) ./libft/libft.a $(OBJS2) -o $(NAME2)
 
-$(NAME): $(SRC)
-	make -C libft
-	cp libft/libft.a push_swap.a
-	gcc  -c -g $(SRC) -I push_swap.h -I libft/libft.h
-	ar -rc $(NAME) $(OBJ)
+%.o: %.c $(HEADER)
+	gcc $(FLAGS) -c -g $*.c -o $@
 
-fclean: clean
-	make -C libft fclean
-	rm -f libft/libft.a
-	rm -f libft.a
-	rm -f push_swap.a
-	rm -f $(NAME)
+g:
+	@gcc ./libft/libft.a $(SRCS1) -g -o $(NAME1)
+	@gcc ./libft/libft.a $(SRCS2) -g -o $(NAME2)
 
 clean:
-	make -C libft clean
-	rm -f $(OBJ)
+	@$(MAKE) -C ./libft clean
+	@rm -f *.o
 
-re: fclean all
+fclean: clean
+	@rm -f $(NAME1)
+	@rm -f $(NAME2)
+
+re: fclean  lib all
+
+lib:
+	@$(MAKE) -C ./libft re
+	@$(MAKE) -C ./libft clean

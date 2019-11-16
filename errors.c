@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 19:00:08 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/15 19:26:50 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/16 17:22:25 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	error_checker_stder(t_2_stacks *stacks, char *str)
 void	free_all(t_2_stacks *stacks, char ***numbers)
 {
 	int 	i;
-	t_stack *tmp;
 
 	i = 0;
 	while ((*numbers)[i])
@@ -57,8 +56,10 @@ void	free_all(t_2_stacks *stacks, char ***numbers)
 		free((*numbers)[i]);
 		i++;
 	}
-	free(*numbers);
-	free_stacks(stacks);
+	if (*numbers)
+		free(*numbers);
+	if (stacks)
+		free_stacks(stacks);
 }
 
 void	checker_stdin(t_2_stacks *stacks, char *str)
@@ -87,4 +88,11 @@ void	checker_stdin(t_2_stacks *stacks, char *str)
 		rrr(stacks);
 	else
 		error_checker_stder(stacks, str);
+}
+
+int		write_error()
+{
+	write(2, "Error\n", 6);
+	exit(0);
+	return (0);
 }
