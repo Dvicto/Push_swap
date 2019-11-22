@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 21:32:09 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/20 16:16:27 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/21 16:11:18 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_stack		*new_stack(t_stack *stack)
 {
-	if(!(stack = (t_stack *)malloc(sizeof(t_stack))))
+	if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
 		exit(0);
 	stack->next = NULL;
 	stack->value = 0;

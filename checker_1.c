@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 17:05:59 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/20 16:15:49 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/22 17:24:15 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,18 @@ static int				check_and_create(t_2_stacks *stacks, char *str)
 
 static int				ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 {
+	long long	j;
+
+	j = 0;
+	while (j < (long long)ft_strlen(str))
+	{
+		if (str[j] > 32 && str[j] < 127)
+			j = LONG_MAX;
+		else
+			j++;		
+	}
+	if (j != LONG_MAX)
+		return (write_error());
 	if (!(check_and_create(stacks, str)))
 	{
 		return (write_error());

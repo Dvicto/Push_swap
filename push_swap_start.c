@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:35:52 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/20 16:19:10 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/21 16:11:41 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int						main(int argc, char **argv)
 	i = 1;
 	if (argc < 2)
 		return (0);
-	if(!(stacks = (t_2_stacks *)malloc(sizeof(t_2_stacks))))
+	if (!(stacks = (t_2_stacks *)malloc(sizeof(t_2_stacks))))
 		exit(0);
 	stacks->b = NULL;
 	stacks->a = NULL;
