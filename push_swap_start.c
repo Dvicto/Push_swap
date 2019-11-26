@@ -6,7 +6,7 @@
 /*   By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/16 14:35:52 by dvictor           #+#    #+#             */
-/*   Updated: 2019/11/21 16:11:41 by dvictor          ###   ########.fr       */
+/*   Updated: 2019/11/26 14:40:48 by dvictor          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static long long int	new_atoi(char *str, int i)
 		num = num * 10 + (str[i] - '0');
 		i++;
 	}
+	if (fl)
+		num = num * -1;
 	if (num > INT_MAX || num < INT_MIN)
 		return (LONG_MAX);
-	if (fl)
-		return (num * -1);
 	return (num);
 }
 
@@ -70,6 +70,18 @@ static int				check_and_create(t_2_stacks *stacks, char *str, int i)
 
 static int				ne_xvataet_mesta(t_2_stacks *stacks, char *str, int i)
 {
+	long long	j;
+
+	j = 0;
+	while (j < (long long)ft_strlen(str))
+	{
+		if (str[j] > 32 && str[j] < 127)
+			j = LONG_MAX;
+		else
+			j++;
+	}
+	if (j != LONG_MAX)
+		return (write_error());
 	if (!(check_and_create(stacks, str, 0)))
 	{
 		return (write_error());

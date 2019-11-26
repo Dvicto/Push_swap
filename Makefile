@@ -6,7 +6,7 @@
 #    By: dvictor <dvictor@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 16:42:57 by dvictor           #+#    #+#              #
-#    Updated: 2019/11/22 17:10:56 by dvictor          ###   ########.fr        #
+#    Updated: 2019/11/26 14:37:58 by dvictor          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(NAME2): $(OBJS2) $(HEADER)
 	gcc $(FLAGS) ./libft/libft.a $(OBJS2) -o $(NAME2)
 
 %.o: %.c $(HEADER)
-	gcc $(FLAGS) -c -g $*.c -o $@
+	gcc $(FLAGS) -c $*.c -o $@
 
 g:
 	@gcc ./libft/libft.a $(SRCS1) -g -o $(NAME1)
@@ -54,12 +54,11 @@ clean:
 	@$(MAKE) -C ./libft clean
 	@rm -f *.o
 
-fclean: clean
+fclean: clean lib
 	@rm -f $(NAME1)
 	@rm -f $(NAME2)
 
 re: fclean  lib all
 
 lib:
-	@$(MAKE) -C ./libft re
-	@$(MAKE) -C ./libft clean
+	@$(MAKE) -C ./libft fclean
